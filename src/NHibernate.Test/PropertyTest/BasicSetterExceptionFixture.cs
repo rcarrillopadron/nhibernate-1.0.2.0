@@ -24,7 +24,7 @@ namespace NHibernate.Test.PropertyTest
 		}
 		
 		[Test]
-		[ExpectedException( typeof(PropertyAccessException), "The type System.String can not be assigned to a property of type System.Int32 setter of NHibernate.Test.PropertyTest.BasicSetterExceptionFixture+A.Id" )]
+		[ExpectedException( typeof(PropertyAccessException))]
 		public void SetInvalidType()
 		{
 			A instance = new A();
@@ -32,7 +32,7 @@ namespace NHibernate.Test.PropertyTest
 		}
 
 		[Test]
-		[ExpectedException( typeof(PropertyAccessException), "could not set a property value by reflection setter of NHibernate.Test.PropertyTest.BasicSetterExceptionFixture+A.Id" )]
+		[ExpectedException( typeof(PropertyAccessException))]
 		public void SetValueArgumentException()
 		{
 			A instance = new A();

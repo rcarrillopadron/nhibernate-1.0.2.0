@@ -107,7 +107,7 @@
 	>
 		<nant target="build" buildfile="src/HashCodeProvider/HashCodeProvider.build" />
 		<!-- the Iesi.Collections.build takes care of determining if this is a clover build or not -->
-		<nant target="coverage-report" buildfile="src/Iesi.Collections/Iesi.Collections.build" />
+		<!-- <nant target="coverage-report" buildfile="src/Iesi.Collections/Iesi.Collections.build" /> -->
 	</target>
 	
 	<target name="build-with-clover" depends="init" description="Builds current config with Clover coverage">
@@ -128,7 +128,7 @@
 		<property name="clover.enabled" value="false" />
 	</target>
 	
-	<target name="build" depends="init" description="Builds current configuration">
+	<target name="build" depends="init, build-external" description="Builds current configuration">
 		<echo message="Current Directory is ${project::get-base-directory()}" />
 		
 		<echo message="Build Directory is ${build.dir}" />
@@ -177,10 +177,10 @@
 
 	<target name="merge">
 		
-		<exec program="ilmerge.exe" basedir="external-bin" useruntimeengine="true">
+		<exec program="ilmerge.exe" basedir="external-bin">
 			<arg value="/ndebug:${build.debug}" />
 			<arg value="/lib:${build.dir}/bin" />
-			<arg value="/targetplatform:v1.1" />
+			<arg value="/targetplatform:v4" />
 			<arg value="/keyfile:src/NHibernate.snk" if="${sign}" />
 			<arg value="/out:${build.dir}/NHibernate.dll" />
 			<arg value="NHibernate.dll" />

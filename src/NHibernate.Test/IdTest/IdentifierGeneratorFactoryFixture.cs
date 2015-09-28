@@ -14,7 +14,7 @@ namespace NHibernate.Test.IdTest
 		/// caught with a bad class name passed in.
 		/// </summary>
 		[Test]
-		[ExpectedException( typeof(MappingException), "could not instantiate id generator for strategy 'Guid'" )]
+		[ExpectedException( typeof(MappingException))]
 		public void NonCreatableStrategy()
 		{
 			IIdentifierGenerator idGenerator = null;

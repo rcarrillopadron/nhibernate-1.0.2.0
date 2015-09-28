@@ -5,14 +5,11 @@
 	default="build" 
 	xmlns="http://nant.sf.net/schemas/nant-0.84.win32.net-1.0.xsd"
 >
-
 	<target name="build">
 		<exec 
-			program="${nant.settings.currentframework.frameworkdirectory}\ilasm" 
-			commandline="HashCodeProvider.il /dll /output:..\..\lib\HashCodeProvider.dll /key:..\NHibernate.snk" 
+			program="${framework::get-assembly-directory(framework::get-target-framework())}\ilasm" 
+			commandline="HashCodeProvider.il /dll /output:..\..\lib\HashCodeProvider.dll " 
 		/>	
 		<copy file="HashCodeProvider.license.txt" todir="../../lib" />
-	</target>
-	
-	
+	</target>	
 </project>
