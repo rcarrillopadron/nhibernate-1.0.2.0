@@ -1,3 +1,4 @@
+```html
 <h1>Welcome to NHibernate.</h1>
 <hr>
 <p>
@@ -99,3 +100,4 @@
 			Add Support for "Set" Collections to .NET</a>
 	</li>
 </ul>
+```
