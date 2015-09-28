@@ -9,7 +9,7 @@ namespace NHibernate.Test.MappingTest
 	public class ForeignKeyFixture
 	{
 		[Test]
-		[ExpectedException( typeof(MappingException), "Foreign key in table fktable must have same number of columns as referenced primary key in table pktable")]
+		[ExpectedException( typeof(MappingException))]
 		public void UnmatchingColumns()
 		{
 

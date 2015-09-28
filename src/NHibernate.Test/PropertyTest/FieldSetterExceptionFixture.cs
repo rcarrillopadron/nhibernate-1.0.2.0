@@ -24,7 +24,7 @@ namespace NHibernate.Test.PropertyTest
 		}
 		
 		[Test]
-		[ExpectedException( typeof(PropertyAccessException), "The type System.String can not be assigned to a field of type System.Int32 setter of NHibernate.Test.PropertyTest.FieldSetterExceptionFixture+A.Id" )]
+		[ExpectedException( typeof(PropertyAccessException))]
 		public void SetInvalidType()
 		{
 			A instance = new A();

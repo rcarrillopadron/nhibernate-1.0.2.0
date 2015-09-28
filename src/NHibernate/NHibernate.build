@@ -34,7 +34,7 @@
 		<if test="${clover.enabled}">	
 			<clover-setup 
 				initstring="..\..\${clover.db}"
-				builddir="..\..\${clover.src}\${nant.project.name}"
+				builddir="..\..\${clover.src}\${project::get-name()}"
 				enabled="${clover.enabled}"
 				flushinterval="1000"
 			/>
@@ -54,10 +54,10 @@
 			<attributes>
 				<attribute type="CLSCompliantAttribute" value="true" />
 				<attribute type="ComVisibleAttribute" value="false" />
-				<attribute type="AssemblyTitleAttribute" value="${nant.project.name} for ${current.runtime.description}" />
+				<attribute type="AssemblyTitleAttribute" value="${project::get-name()} for ${current.runtime.description}" />
 				<attribute type="AssemblyDescriptionAttribute" value="An object persistence library for relational databases." />
 				<attribute type="AssemblyCompanyAttribute" value="${project.company}" />
-				<attribute type="AssemblyProductAttribute" value="${nant.project.name}" />
+				<attribute type="AssemblyProductAttribute" value="${project::get-name()}" />
 				<attribute type="AssemblyCopyrightAttribute" value="Licensed under LGPL." />
 				<attribute type="AssemblyVersionAttribute" value="${project.version}" />
 				<attribute type="AssemblyInformationalVersionAttribute" value="${project.version.major}.${project.version.minor}" />
@@ -71,8 +71,8 @@
 			target="library" 
 			define="${current.build.defines}" 
 			debug="${build.debug}" 
-			output="${build.dir}/bin/${nant.project.name}.dll" 
-			doc="${build.dir}/bin/${nant.project.name}.xml"
+			output="${build.dir}/bin/${project::get-name()}.dll" 
+			doc="${build.dir}/bin/${project::get-name()}.xml"
 		>
 			<nowarn>
 				<warning number="1573" />
@@ -112,9 +112,9 @@
 			</resources>
 			
 			<references basedir="${build.dir}/bin">
-				<include name="${nant.settings.currentframework.frameworkassemblydirectory}/System.dll" />
-				<include name="${nant.settings.currentframework.frameworkassemblydirectory}/System.XML.dll" />
-				<include name="${nant.settings.currentframework.frameworkassemblydirectory}/System.Data.dll" />
+				<include name="${framework::get-assembly-directory(framework::get-target-framework())}/System.dll" />
+				<include name="${framework::get-assembly-directory(framework::get-target-framework())}/System.XML.dll" />
+				<include name="${framework::get-assembly-directory(framework::get-target-framework())}/System.Data.dll" />
 				<include name="Iesi.Collections.dll" />
 				<include name="log4net.dll" />
 				<include name="HashCodeProvider.dll" />
