@@ -34,7 +34,7 @@
 		<if test="${clover.enabled}">	
 			<clover-setup 
 				initstring="..\..\${clover.db}"
-				builddir="..\..\${clover.src}\${nant.project.name}"
+				builddir="..\..\${clover.src}\${project::get-name()}"
 				enabled="${clover.enabled}"
 				flushinterval="1000"
 			/>
@@ -51,10 +51,10 @@
 			</imports>
 			<attributes>
 				<attribute type="CLSCompliantAttribute" value="true" />
-				<attribute type="AssemblyTitleAttribute" value="${nant.project.name} for ${current.runtime.description}" />
+				<attribute type="AssemblyTitleAttribute" value="${project::get-name()} for ${current.runtime.description}" />
 				<attribute type="AssemblyDescriptionAttribute" value="Enhanced Collections for .NET.  Code was published at http://www.codeproject.com/csharp/sets.asp" />
 				<attribute type="AssemblyCompanyAttribute" value="${project.company}" />
-				<attribute type="AssemblyProductAttribute" value="${nant.project.name}" />
+				<attribute type="AssemblyProductAttribute" value="${project::get-name()}" />
 				<attribute type="AssemblyCopyrightAttribute" value="Declaration of code in public domain can be found in comment by Jason Smith at http://www.codeproject.com/csharp/sets.asp#xx703510xx.  Copyright © 2002-2004 by Aidant Systems, Inc., and by Jason Smith." />
 				<attribute type="AssemblyVersionAttribute" value="1.0.0.1" />
 				<attribute type="AssemblyInformationalVersionAttribute" value="1.0" />
@@ -67,8 +67,8 @@
 			target="library" 
 			define="${current.build.defines}" 
 			debug="${build.debug}" 
-			output="${build.dir}/bin/${nant.project.name}.dll" 
-			doc="${build.dir}/bin/${nant.project.name}.xml"
+			output="${build.dir}/bin/${project::get-name()}.dll" 
+			doc="${build.dir}/bin/${project::get-name()}.xml"
 		>
 			
 			<sources failonempty="true">
@@ -77,9 +77,9 @@
 			
 			
 			<references basedir="${build.dir}/bin">
-				<include name="${nant.settings.currentframework.frameworkassemblydirectory}/System.dll" />
-				<include name="${nant.settings.currentframework.frameworkassemblydirectory}/System.XML.dll" />
-				<include name="${nant.settings.currentframework.frameworkassemblydirectory}/System.Data.dll" />
+				<include name="${framework::get-assembly-directory(framework::get-target-framework())}/System.dll" />
+				<include name="${framework::get-assembly-directory(framework::get-target-framework())}/System.XML.dll" />
+				<include name="${framework::get-assembly-directory(framework::get-target-framework())}/System.Data.dll" />
 			</references>
 	
 		</csc>

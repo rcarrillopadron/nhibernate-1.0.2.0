@@ -27,10 +27,10 @@
 				<import namespace="System.Runtime.CompilerServices" />
 			</imports>
 			<attributes>
-				<attribute type="AssemblyTitleAttribute" value="${nant.project.name} for ${current.runtime.description}" />
+				<attribute type="AssemblyTitleAttribute" value="${project::get-name()} for ${current.runtime.description}" />
 				<attribute type="AssemblyDescriptionAttribute" value="The Unit Tests for Iesi.Collections." />
 				<attribute type="AssemblyCompanyAttribute" value="${project.company}" />
-				<attribute type="AssemblyProductAttribute" value="${nant.project.name}" />
+				<attribute type="AssemblyProductAttribute" value="${project::get-name()}" />
 				<attribute type="AssemblyCopyrightAttribute" value="Licensed under LGPL." />
 				<attribute type="AssemblyVersionAttribute" value="1.0.0.1" />
 				<attribute type="AssemblyInformationalVersionAttribute" value="1.0" />
@@ -43,7 +43,7 @@
 			target="library" 
 			define="${current.build.defines}"
 			debug="${build.debug}"
-			output="${build.dir}/bin/${nant.project.name}.dll" 
+			output="${build.dir}/bin/${project::get-name()}.dll" 
 		>
 		
 			<references basedir="${build.dir}/bin">
@@ -70,7 +70,7 @@
 				outputdir="${build.dir}/bin" 
 			/>
 			<test 
-				assemblyname="${build.dir}/bin/${nant.project.name}.dll" 
+				assemblyname="${build.dir}/bin/${project::get-name()}.dll" 
 			/>
 		</nunit2>
 		
