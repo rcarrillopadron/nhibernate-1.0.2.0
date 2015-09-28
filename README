@@ -1,8 +1,7 @@
-```html
 <h1>Welcome to NHibernate.</h1>
 <hr>
 <p>
-	<a href="http://www.nhibernate.org/">NHibernate</a> is a .NET based object persistence library for relational databases. 
+	<a href="http://www.nhibernate.org/">NHibernate</a> is a .NET based object persistence library for relational databases.
 	NHibernate is a port of the excellent Java <a href="http://www.hibernate.org/">Hibernate</a>
 	relational persistence tool.
 </p>
@@ -14,7 +13,7 @@
 
 <h2>Documentation</h2>
 <p>
-	Documentation is not complete right now. We are working on documenting the code as 
+	Documentation is not complete right now. We are working on documenting the code as
 	it is being developed.
 	<br/>All available resources on NHibernate can be found online:
 	<a href="http://wiki.nhibernate.org/display/NH/Documentation">http://wiki.nhibernate.org/display/NH/Documentation</a>.
@@ -60,7 +59,7 @@
 
 <h2>Bug Reports</h2>
 <p>
-	As we mentioned before, this software is still being developed. So if you do 
+	As we mentioned before, this software is still being developed. So if you do
 	find any bugs please use the <a href="http://jira.nhibernate.org/">JIRA bug tracker</a>.
 </p>
 
@@ -75,8 +74,8 @@
 	<li>log4net</li>
 </ul>
 <p>
-	This product uses software copyrighted by DigitalCraftsmen 
-	(http://www.digitalcraftsmen.com.br) that is Licensed under the Apache License, 
+	This product uses software copyrighted by DigitalCraftsmen
+	(http://www.digitalcraftsmen.com.br) that is Licensed under the Apache License,
 	Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
 </p>
 <ul>
@@ -100,4 +99,3 @@
 			Add Support for "Set" Collections to .NET</a>
 	</li>
 </ul>
-```
