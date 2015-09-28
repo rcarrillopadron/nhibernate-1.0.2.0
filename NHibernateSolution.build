@@ -72,14 +72,14 @@
 		<property name="project.config" value="debug" />
 		<property name="build.debug" value="true" />
 		<property name="build.name" value="${project.name}-${project.version}-${project.config}" />
-		<property name="build.dir" value="${nant.project.basedir}/build/${project.name}-${project.version}" />
+		<property name="build.dir" value="${project::get-base-directory()}/build/${project.name}-${project.version}" />
 	</target>
 	
 	<target name="release" description="Perform a 'release' build">
 		<property name="project.config" value="release" />
 		<property name="build.debug" value="false" />
 		<property name="build.name" value="${project.name}-${project.version}" />
-		<property name="build.dir" value="${nant.project.basedir}/build/${project.name}-${project.version}" />
+		<property name="build.dir" value="${project::get-base-directory()}/build/${project.name}-${project.version}" />
 	</target>
 	
 	<target name="init" description="Initializes build properties">
@@ -129,7 +129,7 @@
 	</target>
 	
 	<target name="build" depends="init" description="Builds current configuration">
-		<echo message="Current Directory is ${nant.project.basedir}" />
+		<echo message="Current Directory is ${project::get-base-directory()}" />
 		
 		<echo message="Build Directory is ${build.dir}" />
 		
@@ -488,13 +488,13 @@
 			</fileset>
 		</copy>
 
-		<zip zipfile="${nant.project.basedir}/build/${project.name}-clover-${project.version}.zip">
+		<zip zipfile="${project::get-base-directory()}/build/${project.name}-clover-${project.version}.zip">
 			<fileset basedir="${build.dir}">
 				<include name="clover/**" />
 			</fileset>
 		</zip>
 
-		<property name="project.zip-path" value="${nant.project.basedir}/build/${build.name}.zip" />
+		<property name="project.zip-path" value="${project::get-base-directory()}/build/${build.name}.zip" />
 
 		<zip zipfile="${project.zip-path}">
 			<fileset basedir="${build.dir}">
@@ -519,7 +519,8 @@
 			and nunit-2.2 related tasks. Probably something simple, but I think I've 
 			followed all the instructions to get that working...
 		-->
-		<call target="set-net-1.1-runtime-configuration" />
+		<!-- <call target="set-net-1.1-runtime-configuration" /> -->		
+		<call target="set-net-4.5-runtime-configuration" />
 		<!--
 		<ifnot propertyexists="current.runtime.config">
 			<ifnot propertyexists="nant.settings.currentframework">
@@ -565,6 +566,17 @@
 		<property name="current.runtime.config" value="net" /> 
 		<property name="current.runtime.version" value="1.1" /> 
 		<property name="current.runtime.description" value="Microsoft .NET Framework 1.1" /> 
+		<property name="current.build.defines" value="${build.defines}NET,NET_1_1" /> 
+		<property name="link.sdkdoc.version" value="SDK_v1_1" /> 
+		<property name="lib.dir" value="lib/${current.runtime.config}/${current.runtime.version}" /> 
+		<property name="nant.settings.currentframework" value="${current.runtime.config}-${current.runtime.version}" /> 
+		<call target="set-runtime-configuration-flags" /> 
+	</target>
+	
+	<target name="set-net-4.5-runtime-configuration">
+		<property name="current.runtime.config" value="net" /> 
+		<property name="current.runtime.version" value="4.0" /> 
+		<property name="current.runtime.description" value="Microsoft .NET Framework 4.0" /> 
 		<property name="current.build.defines" value="${build.defines}NET,NET_1_1" /> 
 		<property name="link.sdkdoc.version" value="SDK_v1_1" /> 
 		<property name="lib.dir" value="lib/${current.runtime.config}/${current.runtime.version}" /> 
